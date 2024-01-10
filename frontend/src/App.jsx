@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import PostDetails from "./pages/PostDetails"
+import CreatePost from "./pages/CreatePost"
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/write" element={<CreatePost />} />
         <Route exact path="/posts/post/:id" element={<PostDetails />} />
       </Routes>
      
