@@ -25,7 +25,9 @@ const connectDb = async() => {
 }
 
 dotenv.config()
-
+app.get("/", (req, res) => {
+    res.json("hello")
+})
 // middlewares
 
 app.use(express.json())
