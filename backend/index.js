@@ -25,12 +25,13 @@ const connectDb = async() => {
 }
 
 dotenv.config()
-app.get("/", (req, res) => {
-    res.json("hello")
-})
+
 // middlewares
 
 app.use(express.json())
+app.use("/", (req, res) => {
+    res.json("hello")
+})
 app.use("/images",express.static(path.join(__dirname,"/images")))
 app.use(cors({origin:"https://blog-app-seven-hazel.vercel.app",credentials:true}))
 app.use(cookieParser())
