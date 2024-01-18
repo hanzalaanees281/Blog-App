@@ -1,14 +1,14 @@
-import HomePost from "../components/HomePost"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
-import { useContext, useEffect, useState } from "react"
-import { URL } from "../url"
-import axios from "axios"
 import { Link, useLocation } from "react-router-dom"
-import Loader from "../components/Loader"
+import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../Context/UserContext"
+import axios from "axios"
+import { URL } from "../url"
+import Loader from "../components/Loader"
+import HomePost from "../components/HomePost"
 
-const Home = () => {
+const MyBlogs = () => {
 
   const { search } = useLocation()
   const [posts, setPosts] = useState([])
@@ -20,7 +20,7 @@ const Home = () => {
     setLoader(true)
     try {
 
-      const res = await axios.get(URL + "/api/posts/" + search)
+      const res = await axios.get(URL + "/api/posts/user/" + user.id)
       setPosts(res.data)
 
       if (res.data.length === 0) {
@@ -43,13 +43,13 @@ const Home = () => {
   }, [search])
 
   return (
-    <>
+    <div>
       <Navbar />
       <div className="px-8 md:px-[200px] min-h-[80vh]">
         {loader ? <div className="h-[40vh] flex justify-center items-center"><Loader /></div> : !noResults ? posts.map((post) => (
 
           <>
-            <Link to={user?`/posts/post/${post._id}`: "/login"}>
+            <Link to={user ? `/posts/post/${post._id}` : "/login"}>
               <HomePost key={post._id} post={post} />
             </Link>
           </>
@@ -57,8 +57,8 @@ const Home = () => {
         )) : <h3 className="text-center font-bold mt-16">No posts available</h3>}
       </div>
       <Footer />
-    </>
+    </div>
   )
 }
 
-export default Home
+export default MyBlogs
