@@ -1,2 +1,2 @@
-export const URL = "http://localhost:4000"
-export const IF = "http://localhost:4000/images/"
+export const URL = "https://blog-app-backend-opal.vercel.app"
+export const IF = "https://blog-app-backend-opal.vercel.app/images/"
